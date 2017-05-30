@@ -408,7 +408,7 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
             url = url + Uri.EscapeDataString(ExpressRouteManagementClient.BgpPeeringAccessTypeToString(accessType));
             List<string> queryParameters = new List<string>();
             queryParameters.Add("api-version=1.0");
-            queryParameters.Add("addressfamily =All");
+            queryParameters.Add("addressfamily=" + Uri.EscapeDataString(peerAddressType.ToString()));
             if (queryParameters.Count > 0)
             {
                 url = url + "?" + string.Join("&", queryParameters);
