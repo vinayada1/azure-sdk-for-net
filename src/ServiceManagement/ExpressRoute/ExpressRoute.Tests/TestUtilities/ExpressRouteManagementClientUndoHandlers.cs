@@ -98,16 +98,18 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute.Testing
             undoFunction = null;
             string serviceKey;
             BgpPeeringAccessType accessType;
+            BgpPeerAdddressType peerAddressType;
 
             if (TryAssignParameter<string>("serviceKey", parameters, out serviceKey) &&
                 TryAssignParameter<BgpPeeringAccessType>("accessType", parameters, out accessType) &&
                 !string.IsNullOrEmpty(serviceKey))
             {
+                bool isPeerAddressTypeSpecified = TryAssignParameter<BgpPeerAdddressType>("peerAddressType", parameters, out peerAddressType);
                 undoFunction = () =>
                     {
                         using (ExpressRouteManagementClient expressRouteClient = GetClientFromOperations(client))
                         {
-                            expressRouteClient.BorderGatewayProtocolPeerings.Remove(serviceKey, accessType);
+                            expressRouteClient.BorderGatewayProtocolPeerings.Remove(serviceKey, accessType, isPeerAddressTypeSpecified ? peerAddressType : BgpPeerAdddressType.All);
                         }
                     };
                 return true;
