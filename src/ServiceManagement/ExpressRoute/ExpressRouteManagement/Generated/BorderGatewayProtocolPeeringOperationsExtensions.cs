@@ -114,18 +114,15 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// <param name='accessType'>
         /// Required. Whether the peering is private or public.
         /// </param>
-        /// <param name='peerAddressType'>
-        /// Required. Peer address type to be removed.
-        /// </param>
         /// <returns>
         /// A standard service response including an HTTP status code and
         /// request ID.
         /// </returns>
-        public static ExpressRouteOperationResponse BeginRemove(this IBorderGatewayProtocolPeeringOperations operations, string serviceKey, BgpPeeringAccessType accessType, BgpPeeringAccessType peerAddressType)
+        public static ExpressRouteOperationResponse BeginRemove(this IBorderGatewayProtocolPeeringOperations operations, string serviceKey, BgpPeeringAccessType accessType)
         {
             return Task.Factory.StartNew((object s) => 
             {
-                return ((IBorderGatewayProtocolPeeringOperations)s).BeginRemoveAsync(serviceKey, accessType, peerAddressType);
+                return ((IBorderGatewayProtocolPeeringOperations)s).BeginRemoveAsync(serviceKey, accessType);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
@@ -145,16 +142,13 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// <param name='accessType'>
         /// Required. Whether the peering is private or public.
         /// </param>
-        /// <param name='peerAddressType'>
-        /// Required. Peer address type to be removed.
-        /// </param>
         /// <returns>
         /// A standard service response including an HTTP status code and
         /// request ID.
         /// </returns>
-        public static Task<ExpressRouteOperationResponse> BeginRemoveAsync(this IBorderGatewayProtocolPeeringOperations operations, string serviceKey, BgpPeeringAccessType accessType, BgpPeeringAccessType peerAddressType)
+        public static Task<ExpressRouteOperationResponse> BeginRemoveAsync(this IBorderGatewayProtocolPeeringOperations operations, string serviceKey, BgpPeeringAccessType accessType)
         {
-            return operations.BeginRemoveAsync(serviceKey, accessType, peerAddressType, CancellationToken.None);
+            return operations.BeginRemoveAsync(serviceKey, accessType, CancellationToken.None);
         }
         
         /// <summary>
@@ -416,9 +410,6 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// <param name='accessType'>
         /// Required. Whether the peering is private or public.
         /// </param>
-        /// <param name='peerAddressType'>
-        /// Required. Peer address type to be removed.
-        /// </param>
         /// <returns>
         /// The response body contains the status of the specified asynchronous
         /// operation, indicating whether it has succeeded, is inprogress, or
@@ -430,11 +421,11 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// status code for the failed request, and also includes error
         /// information regarding the failure.
         /// </returns>
-        public static ExpressRouteOperationStatusResponse Remove(this IBorderGatewayProtocolPeeringOperations operations, string serviceKey, BgpPeeringAccessType accessType, BgpPeeringAccessType peerAddressType)
+        public static ExpressRouteOperationStatusResponse Remove(this IBorderGatewayProtocolPeeringOperations operations, string serviceKey, BgpPeeringAccessType accessType)
         {
             return Task.Factory.StartNew((object s) => 
             {
-                return ((IBorderGatewayProtocolPeeringOperations)s).RemoveAsync(serviceKey, accessType, peerAddressType);
+                return ((IBorderGatewayProtocolPeeringOperations)s).RemoveAsync(serviceKey, accessType);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
@@ -454,9 +445,6 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// <param name='accessType'>
         /// Required. Whether the peering is private or public.
         /// </param>
-        /// <param name='peerAddressType'>
-        /// Required. Peer address type to be removed.
-        /// </param>
         /// <returns>
         /// The response body contains the status of the specified asynchronous
         /// operation, indicating whether it has succeeded, is inprogress, or
@@ -468,9 +456,9 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// status code for the failed request, and also includes error
         /// information regarding the failure.
         /// </returns>
-        public static Task<ExpressRouteOperationStatusResponse> RemoveAsync(this IBorderGatewayProtocolPeeringOperations operations, string serviceKey, BgpPeeringAccessType accessType, BgpPeeringAccessType peerAddressType)
+        public static Task<ExpressRouteOperationStatusResponse> RemoveAsync(this IBorderGatewayProtocolPeeringOperations operations, string serviceKey, BgpPeeringAccessType accessType)
         {
-            return operations.RemoveAsync(serviceKey, accessType, peerAddressType, CancellationToken.None);
+            return operations.RemoveAsync(serviceKey, accessType, CancellationToken.None);
         }
         
         /// <summary>

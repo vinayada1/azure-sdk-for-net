@@ -64,9 +64,6 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// <param name='accessType'>
         /// Whether the peering is private or public.
         /// </param>
-        /// <param name='peerAddressType'>
-        /// Peer address type to be removed.
-        /// </param>
         /// <param name='cancellationToken'>
         /// Cancellation token.
         /// </param>
@@ -74,7 +71,7 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// A standard service response including an HTTP status code and
         /// request ID.
         /// </returns>
-        Task<ExpressRouteOperationResponse> BeginRemoveAsync(string serviceKey, BgpPeeringAccessType accessType, BgpPeeringAccessType peerAddressType, CancellationToken cancellationToken);
+        Task<ExpressRouteOperationResponse> BeginRemoveAsync(string serviceKey, BgpPeeringAccessType accessType, CancellationToken cancellationToken);
         
         /// <summary>
         /// The Update Border Gateway Protocol Peering operation updates an
@@ -185,9 +182,6 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// <param name='accessType'>
         /// Whether the peering is private or public.
         /// </param>
-        /// <param name='peerAddressType'>
-        /// Peer address type to be removed.
-        /// </param>
         /// <param name='cancellationToken'>
         /// Cancellation token.
         /// </param>
@@ -202,7 +196,7 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// status code for the failed request, and also includes error
         /// information regarding the failure.
         /// </returns>
-        Task<ExpressRouteOperationStatusResponse> RemoveAsync(string serviceKey, BgpPeeringAccessType accessType, BgpPeeringAccessType peerAddressType, CancellationToken cancellationToken);
+        Task<ExpressRouteOperationStatusResponse> RemoveAsync(string serviceKey, BgpPeeringAccessType accessType, CancellationToken cancellationToken);
         
         /// <summary>
         /// The Update Border Gateway Protocol Peering operation updates an
