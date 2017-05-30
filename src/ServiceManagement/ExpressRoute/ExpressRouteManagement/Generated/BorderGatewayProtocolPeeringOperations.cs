@@ -363,6 +363,10 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// <param name='accessType'>
         /// Required. Whether the peering is private or public.
         /// </param>
+        /// <param name='peerAddressType'>
+        /// Required. Whether the BGP Peer Address Type to deleted is IPv4,
+        /// IPv6 or All.
+        /// </param>
         /// <param name='cancellationToken'>
         /// Cancellation token.
         /// </param>
@@ -370,7 +374,7 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// A standard service response including an HTTP status code and
         /// request ID.
         /// </returns>
-        public async Task<ExpressRouteOperationResponse> BeginRemoveAsync(string serviceKey, BgpPeeringAccessType accessType, CancellationToken cancellationToken)
+        public async Task<ExpressRouteOperationResponse> BeginRemoveAsync(string serviceKey, BgpPeeringAccessType accessType, BgpPeerAdddressType peerAddressType, CancellationToken cancellationToken)
         {
             // Validate
             if (serviceKey == null)
@@ -387,6 +391,7 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("serviceKey", serviceKey);
                 tracingParameters.Add("accessType", accessType);
+                tracingParameters.Add("peerAddressType", peerAddressType);
                 TracingAdapter.Enter(invocationId, this, "BeginRemoveAsync", tracingParameters);
             }
             
@@ -403,6 +408,7 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
             url = url + Uri.EscapeDataString(ExpressRouteManagementClient.BgpPeeringAccessTypeToString(accessType));
             List<string> queryParameters = new List<string>();
             queryParameters.Add("api-version=1.0");
+            queryParameters.Add("addressfamily =All");
             if (queryParameters.Count > 0)
             {
                 url = url + "?" + string.Join("&", queryParameters);
@@ -1415,6 +1421,10 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// <param name='accessType'>
         /// Required. Whether the peering is private or public.
         /// </param>
+        /// <param name='peerAddressType'>
+        /// Required. Whether the BGP Peer Address Type to deleted is IPv4,
+        /// IPv6 or All.
+        /// </param>
         /// <param name='cancellationToken'>
         /// Cancellation token.
         /// </param>
@@ -1429,7 +1439,7 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// status code for the failed request, and also includes error
         /// information regarding the failure.
         /// </returns>
-        public async Task<ExpressRouteOperationStatusResponse> RemoveAsync(string serviceKey, BgpPeeringAccessType accessType, CancellationToken cancellationToken)
+        public async Task<ExpressRouteOperationStatusResponse> RemoveAsync(string serviceKey, BgpPeeringAccessType accessType, BgpPeerAdddressType peerAddressType, CancellationToken cancellationToken)
         {
             ExpressRouteManagementClient client = this.Client;
             bool shouldTrace = TracingAdapter.IsEnabled;
@@ -1440,11 +1450,12 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("serviceKey", serviceKey);
                 tracingParameters.Add("accessType", accessType);
+                tracingParameters.Add("peerAddressType", peerAddressType);
                 TracingAdapter.Enter(invocationId, this, "RemoveAsync", tracingParameters);
             }
             
             cancellationToken.ThrowIfCancellationRequested();
-            ExpressRouteOperationResponse response = await client.BorderGatewayProtocolPeerings.BeginRemoveAsync(serviceKey, accessType, cancellationToken).ConfigureAwait(false);
+            ExpressRouteOperationResponse response = await client.BorderGatewayProtocolPeerings.BeginRemoveAsync(serviceKey, accessType, peerAddressType, cancellationToken).ConfigureAwait(false);
             cancellationToken.ThrowIfCancellationRequested();
             ExpressRouteOperationStatusResponse result = await client.BorderGatewayProtocolPeerings.GetOperationStatusAsync(response.OperationId, cancellationToken).ConfigureAwait(false);
             int delayInSeconds = 30;
