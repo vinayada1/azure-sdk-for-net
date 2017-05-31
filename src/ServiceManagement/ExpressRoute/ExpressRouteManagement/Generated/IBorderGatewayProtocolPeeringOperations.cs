@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// A standard service response including an HTTP status code and
         /// request ID.
         /// </returns>
-        Task<ExpressRouteOperationResponse> BeginRemoveAsync(string serviceKey, BgpPeeringAccessType accessType, BgpPeerAdddressType peerAddressType, CancellationToken cancellationToken);
+        Task<ExpressRouteOperationResponse> BeginRemoveAsync(string serviceKey, BgpPeeringAccessType accessType, BgpPeerAddressType peerAddressType, CancellationToken cancellationToken);
         
         /// <summary>
         /// The Update Border Gateway Protocol Peering operation updates an
@@ -202,7 +202,7 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
         /// status code for the failed request, and also includes error
         /// information regarding the failure.
         /// </returns>
-        Task<ExpressRouteOperationStatusResponse> RemoveAsync(string serviceKey, BgpPeeringAccessType accessType, BgpPeerAdddressType peerAddressType, CancellationToken cancellationToken);
+        Task<ExpressRouteOperationStatusResponse> RemoveAsync(string serviceKey, BgpPeeringAccessType accessType, BgpPeerAddressType peerAddressType, CancellationToken cancellationToken);
         
         /// <summary>
         /// The Update Border Gateway Protocol Peering operation updates an
