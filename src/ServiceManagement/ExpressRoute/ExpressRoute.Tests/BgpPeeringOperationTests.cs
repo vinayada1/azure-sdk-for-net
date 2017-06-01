@@ -123,10 +123,10 @@
 
                 var removeResponse = expressRouteClient.BorderGatewayProtocolPeerings.Remove(serviceKey.ToString(),
                                                                                              BgpPeeringAccessType
-                                                                                                 .Private, BgpPeerAdddressType.All);
+                                                                                                 .Private, BgpPeerAddressType.All);
                 TestUtilities.ValidateOperationResponse(removeResponse);
                 removeResponse = expressRouteClient.BorderGatewayProtocolPeerings.Remove(serviceKey.ToString(),
-                                                                                         BgpPeeringAccessType.Public, BgpPeerAdddressType.All);
+                                                                                         BgpPeeringAccessType.Public, BgpPeerAddressType.All);
                 TestUtilities.ValidateOperationResponse(removeResponse);
             }
         }
