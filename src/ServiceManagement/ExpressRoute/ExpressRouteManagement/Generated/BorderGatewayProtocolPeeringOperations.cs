@@ -235,6 +235,13 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                 vlanIdElement.Value = parameters.VirtualLanId.ToString();
                 createBgpPeeringElement.Add(vlanIdElement);
                 
+                if (parameters.AdvertisedPublicPrefixesIpv6 != null)
+                {
+                    XElement advertisedPublicPrefixesIpv6Element = new XElement(XName.Get("AdvertisedPublicPrefixesIpv6", "http://schemas.microsoft.com/windowsazure"));
+                    advertisedPublicPrefixesIpv6Element.Value = parameters.AdvertisedPublicPrefixesIpv6;
+                    createBgpPeeringElement.Add(advertisedPublicPrefixesIpv6Element);
+                }
+                
                 if (parameters.PrimaryPeerSubnetIpv6 != null)
                 {
                     XElement primaryPeerSubnetIpv6Element = new XElement(XName.Get("PrimaryPeerSubnetIpv6", "http://schemas.microsoft.com/windowsazure"));
@@ -247,13 +254,6 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                     XElement secondaryPeerSubnetIpv6Element = new XElement(XName.Get("SecondaryPeerSubnetIpv6", "http://schemas.microsoft.com/windowsazure"));
                     secondaryPeerSubnetIpv6Element.Value = parameters.SecondaryPeerSubnetIpv6;
                     createBgpPeeringElement.Add(secondaryPeerSubnetIpv6Element);
-                }
-                
-                if (parameters.AdvertisedPublicPrefixesIpv6 != null)
-                {
-                    XElement advertisedPublicPrefixesIpv6Element = new XElement(XName.Get("AdvertisedPublicPrefixesIpv6", "http://schemas.microsoft.com/windowsazure"));
-                    advertisedPublicPrefixesIpv6Element.Value = parameters.AdvertisedPublicPrefixesIpv6;
-                    createBgpPeeringElement.Add(advertisedPublicPrefixesIpv6Element);
                 }
                 
                 XElement customerAsnIpv6Element = new XElement(XName.Get("CustomerAsnIpv6", "http://schemas.microsoft.com/windowsazure"));
@@ -692,6 +692,13 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                 vlanIdElement.Value = parameters.VirtualLanId.ToString();
                 updateBgpPeeringElement.Add(vlanIdElement);
                 
+                if (parameters.AdvertisedPublicPrefixesIpv6 != null)
+                {
+                    XElement advertisedPublicPrefixesIpv6Element = new XElement(XName.Get("AdvertisedPublicPrefixesIpv6", "http://schemas.microsoft.com/windowsazure"));
+                    advertisedPublicPrefixesIpv6Element.Value = parameters.AdvertisedPublicPrefixesIpv6;
+                    updateBgpPeeringElement.Add(advertisedPublicPrefixesIpv6Element);
+                }
+                
                 if (parameters.PrimaryPeerSubnetIpv6 != null)
                 {
                     XElement primaryPeerSubnetIpv6Element = new XElement(XName.Get("PrimaryPeerSubnetIpv6", "http://schemas.microsoft.com/windowsazure"));
@@ -704,13 +711,6 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                     XElement secondaryPeerSubnetIpv6Element = new XElement(XName.Get("SecondaryPeerSubnetIpv6", "http://schemas.microsoft.com/windowsazure"));
                     secondaryPeerSubnetIpv6Element.Value = parameters.SecondaryPeerSubnetIpv6;
                     updateBgpPeeringElement.Add(secondaryPeerSubnetIpv6Element);
-                }
-                
-                if (parameters.AdvertisedPublicPrefixesIpv6 != null)
-                {
-                    XElement advertisedPublicPrefixesIpv6Element = new XElement(XName.Get("AdvertisedPublicPrefixesIpv6", "http://schemas.microsoft.com/windowsazure"));
-                    advertisedPublicPrefixesIpv6Element.Value = parameters.AdvertisedPublicPrefixesIpv6;
-                    updateBgpPeeringElement.Add(advertisedPublicPrefixesIpv6Element);
                 }
                 
                 XElement customerAsnIpv6Element = new XElement(XName.Get("CustomerAsnIpv6", "http://schemas.microsoft.com/windowsazure"));
@@ -1019,20 +1019,6 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                                 bgpPeeringInstance.AdvertisedCommunities = advertisedCommunitiesInstance;
                             }
                             
-                            XElement primaryPeerSubnetIpv6Element = bgpPeeringElement.Element(XName.Get("PrimaryPeerSubnetIpv6", "http://schemas.microsoft.com/windowsazure"));
-                            if (primaryPeerSubnetIpv6Element != null)
-                            {
-                                string primaryPeerSubnetIpv6Instance = primaryPeerSubnetIpv6Element.Value;
-                                bgpPeeringInstance.PrimaryPeerSubnetIpv6 = primaryPeerSubnetIpv6Instance;
-                            }
-                            
-                            XElement secondaryPeerSubnetIpv6Element = bgpPeeringElement.Element(XName.Get("SecondaryPeerSubnetIpv6", "http://schemas.microsoft.com/windowsazure"));
-                            if (secondaryPeerSubnetIpv6Element != null)
-                            {
-                                string secondaryPeerSubnetIpv6Instance = secondaryPeerSubnetIpv6Element.Value;
-                                bgpPeeringInstance.SecondaryPeerSubnetIpv6 = secondaryPeerSubnetIpv6Instance;
-                            }
-                            
                             XElement advertisedPublicPrefixesIpv6Element = bgpPeeringElement.Element(XName.Get("AdvertisedPublicPrefixesIpv6", "http://schemas.microsoft.com/windowsazure"));
                             if (advertisedPublicPrefixesIpv6Element != null)
                             {
@@ -1047,11 +1033,18 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                                 bgpPeeringInstance.AdvertisedPublicPrefixesStateIpv6 = advertisedPublicPrefixesStateIpv6Instance;
                             }
                             
-                            XElement stateIpv6Element = bgpPeeringElement.Element(XName.Get("StateIpv6", "http://schemas.microsoft.com/windowsazure"));
-                            if (stateIpv6Element != null)
+                            XElement primaryPeerSubnetIpv6Element = bgpPeeringElement.Element(XName.Get("PrimaryPeerSubnetIpv6", "http://schemas.microsoft.com/windowsazure"));
+                            if (primaryPeerSubnetIpv6Element != null)
                             {
-                                BgpPeeringState stateIpv6Instance = ((BgpPeeringState)Enum.Parse(typeof(BgpPeeringState), stateIpv6Element.Value, true));
-                                bgpPeeringInstance.StateIpv6 = stateIpv6Instance;
+                                string primaryPeerSubnetIpv6Instance = primaryPeerSubnetIpv6Element.Value;
+                                bgpPeeringInstance.PrimaryPeerSubnetIpv6 = primaryPeerSubnetIpv6Instance;
+                            }
+                            
+                            XElement secondaryPeerSubnetIpv6Element = bgpPeeringElement.Element(XName.Get("SecondaryPeerSubnetIpv6", "http://schemas.microsoft.com/windowsazure"));
+                            if (secondaryPeerSubnetIpv6Element != null)
+                            {
+                                string secondaryPeerSubnetIpv6Instance = secondaryPeerSubnetIpv6Element.Value;
+                                bgpPeeringInstance.SecondaryPeerSubnetIpv6 = secondaryPeerSubnetIpv6Instance;
                             }
                             
                             XElement customerAsnIpv6Element = bgpPeeringElement.Element(XName.Get("CustomerAsnIpv6", "http://schemas.microsoft.com/windowsazure"));
@@ -1068,11 +1061,11 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                                 bgpPeeringInstance.RoutingRegistryNameIpv6 = routingRegistryNameIpv6Instance;
                             }
                             
-                            XElement advertisedCommunitiesIpv6Element = bgpPeeringElement.Element(XName.Get("AdvertisedCommunitiesIpv6", "http://schemas.microsoft.com/windowsazure"));
-                            if (advertisedCommunitiesIpv6Element != null)
+                            XElement stateIpv6Element = bgpPeeringElement.Element(XName.Get("StateIpv6", "http://schemas.microsoft.com/windowsazure"));
+                            if (stateIpv6Element != null)
                             {
-                                string advertisedCommunitiesIpv6Instance = advertisedCommunitiesIpv6Element.Value;
-                                bgpPeeringInstance.AdvertisedCommunitiesIpv6 = advertisedCommunitiesIpv6Instance;
+                                BgpPeeringState stateIpv6Instance = ((BgpPeeringState)Enum.Parse(typeof(BgpPeeringState), stateIpv6Element.Value, true));
+                                bgpPeeringInstance.StateIpv6 = stateIpv6Instance;
                             }
                             
                             XElement legacyModeElement = bgpPeeringElement.Element(XName.Get("LegacyMode", "http://schemas.microsoft.com/windowsazure"));
@@ -1080,6 +1073,13 @@ namespace Microsoft.WindowsAzure.Management.ExpressRoute
                             {
                                 uint legacyModeInstance = uint.Parse(legacyModeElement.Value, CultureInfo.InvariantCulture);
                                 bgpPeeringInstance.LegacyMode = legacyModeInstance;
+                            }
+                            
+                            XElement advertisedCommunitiesIpv6Element = bgpPeeringElement.Element(XName.Get("AdvertisedCommunitiesIpv6", "http://schemas.microsoft.com/windowsazure"));
+                            if (advertisedCommunitiesIpv6Element != null)
+                            {
+                                string advertisedCommunitiesIpv6Instance = advertisedCommunitiesIpv6Element.Value;
+                                bgpPeeringInstance.AdvertisedCommunitiesIpv6 = advertisedCommunitiesIpv6Instance;
                             }
                         }
                         
