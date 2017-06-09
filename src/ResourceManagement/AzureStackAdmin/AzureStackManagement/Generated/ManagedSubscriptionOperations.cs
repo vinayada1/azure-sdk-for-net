@@ -163,6 +163,11 @@ namespace Microsoft.AzureStack.Management
                     managedSubscriptionCreateOrUpdateParametersValue["subscriptionId"] = parameters.Subscription.SubscriptionId;
                 }
                 
+                if (parameters.Subscription.DelegatedProviderSubscriptionId != null)
+                {
+                    managedSubscriptionCreateOrUpdateParametersValue["delegatedProviderSubscriptionId"] = parameters.Subscription.DelegatedProviderSubscriptionId;
+                }
+                
                 if (parameters.Subscription.DisplayName != null)
                 {
                     managedSubscriptionCreateOrUpdateParametersValue["displayName"] = parameters.Subscription.DisplayName;
@@ -182,6 +187,8 @@ namespace Microsoft.AzureStack.Management
                 {
                     managedSubscriptionCreateOrUpdateParametersValue["tenantId"] = parameters.Subscription.TenantId;
                 }
+                
+                managedSubscriptionCreateOrUpdateParametersValue["routingResourceManagerType"] = parameters.Subscription.RoutingResourceManagerType.ToString();
                 
                 if (parameters.Subscription.OfferId != null)
                 {
@@ -256,6 +263,13 @@ namespace Microsoft.AzureStack.Management
                                 subscriptionInstance.SubscriptionId = subscriptionIdInstance;
                             }
                             
+                            JToken delegatedProviderSubscriptionIdValue = responseDoc["delegatedProviderSubscriptionId"];
+                            if (delegatedProviderSubscriptionIdValue != null && delegatedProviderSubscriptionIdValue.Type != JTokenType.Null)
+                            {
+                                string delegatedProviderSubscriptionIdInstance = ((string)delegatedProviderSubscriptionIdValue);
+                                subscriptionInstance.DelegatedProviderSubscriptionId = delegatedProviderSubscriptionIdInstance;
+                            }
+                            
                             JToken displayNameValue = responseDoc["displayName"];
                             if (displayNameValue != null && displayNameValue.Type != JTokenType.Null)
                             {
@@ -282,6 +296,13 @@ namespace Microsoft.AzureStack.Management
                             {
                                 string tenantIdInstance = ((string)tenantIdValue);
                                 subscriptionInstance.TenantId = tenantIdInstance;
+                            }
+                            
+                            JToken routingResourceManagerTypeValue = responseDoc["routingResourceManagerType"];
+                            if (routingResourceManagerTypeValue != null && routingResourceManagerTypeValue.Type != JTokenType.Null)
+                            {
+                                ResourceManagerType routingResourceManagerTypeInstance = ((ResourceManagerType)Enum.Parse(typeof(ResourceManagerType), ((string)routingResourceManagerTypeValue), true));
+                                subscriptionInstance.RoutingResourceManagerType = routingResourceManagerTypeInstance;
                             }
                             
                             JToken offerIdValue = responseDoc["offerId"];
@@ -586,6 +607,13 @@ namespace Microsoft.AzureStack.Management
                                 subscriptionInstance.SubscriptionId = subscriptionIdInstance;
                             }
                             
+                            JToken delegatedProviderSubscriptionIdValue = responseDoc["delegatedProviderSubscriptionId"];
+                            if (delegatedProviderSubscriptionIdValue != null && delegatedProviderSubscriptionIdValue.Type != JTokenType.Null)
+                            {
+                                string delegatedProviderSubscriptionIdInstance = ((string)delegatedProviderSubscriptionIdValue);
+                                subscriptionInstance.DelegatedProviderSubscriptionId = delegatedProviderSubscriptionIdInstance;
+                            }
+                            
                             JToken displayNameValue = responseDoc["displayName"];
                             if (displayNameValue != null && displayNameValue.Type != JTokenType.Null)
                             {
@@ -612,6 +640,13 @@ namespace Microsoft.AzureStack.Management
                             {
                                 string tenantIdInstance = ((string)tenantIdValue);
                                 subscriptionInstance.TenantId = tenantIdInstance;
+                            }
+                            
+                            JToken routingResourceManagerTypeValue = responseDoc["routingResourceManagerType"];
+                            if (routingResourceManagerTypeValue != null && routingResourceManagerTypeValue.Type != JTokenType.Null)
+                            {
+                                ResourceManagerType routingResourceManagerTypeInstance = ((ResourceManagerType)Enum.Parse(typeof(ResourceManagerType), ((string)routingResourceManagerTypeValue), true));
+                                subscriptionInstance.RoutingResourceManagerType = routingResourceManagerTypeInstance;
                             }
                             
                             JToken offerIdValue = responseDoc["offerId"];
@@ -788,6 +823,13 @@ namespace Microsoft.AzureStack.Management
                                         adminSubscriptionDefinitionInstance.SubscriptionId = subscriptionIdInstance;
                                     }
                                     
+                                    JToken delegatedProviderSubscriptionIdValue = valueValue["delegatedProviderSubscriptionId"];
+                                    if (delegatedProviderSubscriptionIdValue != null && delegatedProviderSubscriptionIdValue.Type != JTokenType.Null)
+                                    {
+                                        string delegatedProviderSubscriptionIdInstance = ((string)delegatedProviderSubscriptionIdValue);
+                                        adminSubscriptionDefinitionInstance.DelegatedProviderSubscriptionId = delegatedProviderSubscriptionIdInstance;
+                                    }
+                                    
                                     JToken displayNameValue = valueValue["displayName"];
                                     if (displayNameValue != null && displayNameValue.Type != JTokenType.Null)
                                     {
@@ -814,6 +856,13 @@ namespace Microsoft.AzureStack.Management
                                     {
                                         string tenantIdInstance = ((string)tenantIdValue);
                                         adminSubscriptionDefinitionInstance.TenantId = tenantIdInstance;
+                                    }
+                                    
+                                    JToken routingResourceManagerTypeValue = valueValue["routingResourceManagerType"];
+                                    if (routingResourceManagerTypeValue != null && routingResourceManagerTypeValue.Type != JTokenType.Null)
+                                    {
+                                        ResourceManagerType routingResourceManagerTypeInstance = ((ResourceManagerType)Enum.Parse(typeof(ResourceManagerType), ((string)routingResourceManagerTypeValue), true));
+                                        adminSubscriptionDefinitionInstance.RoutingResourceManagerType = routingResourceManagerTypeInstance;
                                     }
                                     
                                     JToken offerIdValue = valueValue["offerId"];
@@ -980,6 +1029,13 @@ namespace Microsoft.AzureStack.Management
                                         adminSubscriptionDefinitionInstance.SubscriptionId = subscriptionIdInstance;
                                     }
                                     
+                                    JToken delegatedProviderSubscriptionIdValue = valueValue["delegatedProviderSubscriptionId"];
+                                    if (delegatedProviderSubscriptionIdValue != null && delegatedProviderSubscriptionIdValue.Type != JTokenType.Null)
+                                    {
+                                        string delegatedProviderSubscriptionIdInstance = ((string)delegatedProviderSubscriptionIdValue);
+                                        adminSubscriptionDefinitionInstance.DelegatedProviderSubscriptionId = delegatedProviderSubscriptionIdInstance;
+                                    }
+                                    
                                     JToken displayNameValue = valueValue["displayName"];
                                     if (displayNameValue != null && displayNameValue.Type != JTokenType.Null)
                                     {
@@ -1006,6 +1062,13 @@ namespace Microsoft.AzureStack.Management
                                     {
                                         string tenantIdInstance = ((string)tenantIdValue);
                                         adminSubscriptionDefinitionInstance.TenantId = tenantIdInstance;
+                                    }
+                                    
+                                    JToken routingResourceManagerTypeValue = valueValue["routingResourceManagerType"];
+                                    if (routingResourceManagerTypeValue != null && routingResourceManagerTypeValue.Type != JTokenType.Null)
+                                    {
+                                        ResourceManagerType routingResourceManagerTypeInstance = ((ResourceManagerType)Enum.Parse(typeof(ResourceManagerType), ((string)routingResourceManagerTypeValue), true));
+                                        adminSubscriptionDefinitionInstance.RoutingResourceManagerType = routingResourceManagerTypeInstance;
                                     }
                                     
                                     JToken offerIdValue = valueValue["offerId"];
