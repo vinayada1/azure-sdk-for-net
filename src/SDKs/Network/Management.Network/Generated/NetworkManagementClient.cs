@@ -56,6 +56,11 @@ namespace Microsoft.Azure.Management.Network
         public string SubscriptionId { get; set; }
 
         /// <summary>
+        /// Client API version.
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
         /// Gets or sets the preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -98,6 +103,11 @@ namespace Microsoft.Azure.Management.Network
         public virtual IExpressRouteCircuitPeeringsOperations ExpressRouteCircuitPeerings { get; private set; }
 
         /// <summary>
+        /// Gets the IExpressRouteCircuitConnectionsOperations.
+        /// </summary>
+        public virtual IExpressRouteCircuitConnectionsOperations ExpressRouteCircuitConnections { get; private set; }
+
+        /// <summary>
         /// Gets the IExpressRouteCircuitsOperations.
         /// </summary>
         public virtual IExpressRouteCircuitsOperations ExpressRouteCircuits { get; private set; }
@@ -106,6 +116,36 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IExpressRouteServiceProvidersOperations.
         /// </summary>
         public virtual IExpressRouteServiceProvidersOperations ExpressRouteServiceProviders { get; private set; }
+
+        /// <summary>
+        /// Gets the IExpressRouteCrossConnectionsOperations.
+        /// </summary>
+        public virtual IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the IExpressRouteCrossConnectionsTagsOperations.
+        /// </summary>
+        public virtual IExpressRouteCrossConnectionsTagsOperations ExpressRouteCrossConnectionsTags { get; private set; }
+
+        /// <summary>
+        /// Gets the IExpressRouteCrossConnectionPeeringsOperations.
+        /// </summary>
+        public virtual IExpressRouteCrossConnectionPeeringsOperations ExpressRouteCrossConnectionPeerings { get; private set; }
+
+        /// <summary>
+        /// Gets the IExpressRouteCircuitsArpTableOperations.
+        /// </summary>
+        public virtual IExpressRouteCircuitsArpTableOperations ExpressRouteCircuitsArpTable { get; private set; }
+
+        /// <summary>
+        /// Gets the IExpressRouteCircuitsRouteTableSummaryOperations.
+        /// </summary>
+        public virtual IExpressRouteCircuitsRouteTableSummaryOperations ExpressRouteCircuitsRouteTableSummary { get; private set; }
+
+        /// <summary>
+        /// Gets the IExpressRouteCircuitsRoutesTableOperations.
+        /// </summary>
+        public virtual IExpressRouteCircuitsRoutesTableOperations ExpressRouteCircuitsRoutesTable { get; private set; }
 
         /// <summary>
         /// Gets the ILoadBalancersOperations.
@@ -463,8 +503,15 @@ namespace Microsoft.Azure.Management.Network
             AvailableEndpointServices = new AvailableEndpointServicesOperations(this);
             ExpressRouteCircuitAuthorizations = new ExpressRouteCircuitAuthorizationsOperations(this);
             ExpressRouteCircuitPeerings = new ExpressRouteCircuitPeeringsOperations(this);
+            ExpressRouteCircuitConnections = new ExpressRouteCircuitConnectionsOperations(this);
             ExpressRouteCircuits = new ExpressRouteCircuitsOperations(this);
             ExpressRouteServiceProviders = new ExpressRouteServiceProvidersOperations(this);
+            ExpressRouteCrossConnections = new ExpressRouteCrossConnectionsOperations(this);
+            ExpressRouteCrossConnectionsTags = new ExpressRouteCrossConnectionsTagsOperations(this);
+            ExpressRouteCrossConnectionPeerings = new ExpressRouteCrossConnectionPeeringsOperations(this);
+            ExpressRouteCircuitsArpTable = new ExpressRouteCircuitsArpTableOperations(this);
+            ExpressRouteCircuitsRouteTableSummary = new ExpressRouteCircuitsRouteTableSummaryOperations(this);
+            ExpressRouteCircuitsRoutesTable = new ExpressRouteCircuitsRoutesTableOperations(this);
             LoadBalancers = new LoadBalancersOperations(this);
             LoadBalancerBackendAddressPools = new LoadBalancerBackendAddressPoolsOperations(this);
             LoadBalancerFrontendIPConfigurations = new LoadBalancerFrontendIPConfigurationsOperations(this);
@@ -496,6 +543,7 @@ namespace Microsoft.Azure.Management.Network
             VirtualNetworkGatewayConnections = new VirtualNetworkGatewayConnectionsOperations(this);
             LocalNetworkGateways = new LocalNetworkGatewaysOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
+            ApiVersion = "2018-02-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -571,11 +619,14 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "domainNameLabel");
             }
+            if (ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-            string apiVersion = "2018-01-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -585,7 +636,6 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
                 tracingParameters.Add("domainNameLabel", domainNameLabel);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CheckDnsNameAvailability", tracingParameters);
             }
@@ -599,9 +649,9 @@ namespace Microsoft.Azure.Management.Network
             {
                 _queryParameters.Add(string.Format("domainNameLabel={0}", System.Uri.EscapeDataString(domainNameLabel)));
             }
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(ApiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

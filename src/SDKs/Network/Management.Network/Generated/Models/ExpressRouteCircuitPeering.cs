@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Network.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -63,12 +65,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// resource.</param>
         /// <param name="ipv6PeeringConfig">The IPv6 peering
         /// configuration.</param>
+        /// <param name="connections">The list of circuit connections
+        /// associated with Azure Private Peering for this circuit.</param>
         /// <param name="name">Gets name of the resource that is unique within
         /// a resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ExpressRouteCircuitPeering(string id = default(string), string peeringType = default(string), string state = default(string), int? azureASN = default(int?), long? peerASN = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStats stats = default(ExpressRouteCircuitStats), string provisioningState = default(string), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), RouteFilter routeFilter = default(RouteFilter), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), string name = default(string), string etag = default(string))
+        public ExpressRouteCircuitPeering(string id = default(string), string peeringType = default(string), string state = default(string), int? azureASN = default(int?), long? peerASN = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStats stats = default(ExpressRouteCircuitStats), string provisioningState = default(string), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), RouteFilter routeFilter = default(RouteFilter), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), IList<ExpressRouteCircuitConnection> connections = default(IList<ExpressRouteCircuitConnection>), string name = default(string), string etag = default(string))
             : base(id)
         {
             PeeringType = peeringType;
@@ -88,6 +92,7 @@ namespace Microsoft.Azure.Management.Network.Models
             LastModifiedBy = lastModifiedBy;
             RouteFilter = routeFilter;
             Ipv6PeeringConfig = ipv6PeeringConfig;
+            Connections = connections;
             Name = name;
             Etag = etag;
             CustomInit();
@@ -207,6 +212,13 @@ namespace Microsoft.Azure.Management.Network.Models
         public Ipv6ExpressRouteCircuitPeeringConfig Ipv6PeeringConfig { get; set; }
 
         /// <summary>
+        /// Gets or sets the list of circuit connections associated with Azure
+        /// Private Peering for this circuit.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.connections")]
+        public IList<ExpressRouteCircuitConnection> Connections { get; set; }
+
+        /// <summary>
         /// Gets name of the resource that is unique within a resource group.
         /// This name can be used to access the resource.
         /// </summary>
@@ -235,6 +247,16 @@ namespace Microsoft.Azure.Management.Network.Models
             if (PeerASN < 1)
             {
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "PeerASN", 1);
+            }
+            if (Connections != null)
+            {
+                foreach (var element in Connections)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
         }
     }
