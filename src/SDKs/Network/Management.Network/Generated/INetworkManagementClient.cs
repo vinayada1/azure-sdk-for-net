@@ -85,6 +85,11 @@ namespace Microsoft.Azure.Management.Network
         IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; }
 
         /// <summary>
+        /// Gets the IDdosProtectionPlansOperations.
+        /// </summary>
+        IDdosProtectionPlansOperations DdosProtectionPlans { get; }
+
+        /// <summary>
         /// Gets the IAvailableEndpointServicesOperations.
         /// </summary>
         IAvailableEndpointServicesOperations AvailableEndpointServices { get; }

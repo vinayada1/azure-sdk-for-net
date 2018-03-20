@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='crossConnectionName'>
             /// The name of the ExpressRouteCrossConnection.
             /// </param>
-            public static IPage<ExpressRouteCircuitPeering> List(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName)
+            public static IPage<ExpressRouteCrossConnectionPeering> List(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName)
             {
                 return operations.ListAsync(resourceGroupName, crossConnectionName).GetAwaiter().GetResult();
             }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ExpressRouteCircuitPeering>> ListAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ExpressRouteCrossConnectionPeering>> ListAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, crossConnectionName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='peeringName'>
             /// The name of the peering.
             /// </param>
-            public static ExpressRouteCircuitPeering Get(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
+            public static ExpressRouteCrossConnectionPeering Get(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName)
             {
                 return operations.GetAsync(resourceGroupName, crossConnectionName, peeringName).GetAwaiter().GetResult();
             }
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRouteCircuitPeering> GetAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRouteCrossConnectionPeering> GetAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Network
             /// Parameters supplied to the create or update ExpressRouteCrossConnection
             /// peering operation.
             /// </param>
-            public static ExpressRouteCircuitPeering CreateOrUpdate(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, ExpressRouteCircuitPeering peeringParameters)
+            public static ExpressRouteCrossConnectionPeering CreateOrUpdate(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, ExpressRouteCrossConnectionPeering peeringParameters)
             {
                 return operations.CreateOrUpdateAsync(resourceGroupName, crossConnectionName, peeringName, peeringParameters).GetAwaiter().GetResult();
             }
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRouteCircuitPeering> CreateOrUpdateAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, ExpressRouteCircuitPeering peeringParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRouteCrossConnectionPeering> CreateOrUpdateAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, ExpressRouteCrossConnectionPeering peeringParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, peeringParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Management.Network
             /// Parameters supplied to the create or update ExpressRouteCrossConnection
             /// peering operation.
             /// </param>
-            public static ExpressRouteCircuitPeering BeginCreateOrUpdate(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, ExpressRouteCircuitPeering peeringParameters)
+            public static ExpressRouteCrossConnectionPeering BeginCreateOrUpdate(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, ExpressRouteCrossConnectionPeering peeringParameters)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, crossConnectionName, peeringName, peeringParameters).GetAwaiter().GetResult();
             }
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRouteCircuitPeering> BeginCreateOrUpdateAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, ExpressRouteCircuitPeering peeringParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRouteCrossConnectionPeering> BeginCreateOrUpdateAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string resourceGroupName, string crossConnectionName, string peeringName, ExpressRouteCrossConnectionPeering peeringParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, crossConnectionName, peeringName, peeringParameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<ExpressRouteCircuitPeering> ListNext(this IExpressRouteCrossConnectionPeeringsOperations operations, string nextPageLink)
+            public static IPage<ExpressRouteCrossConnectionPeering> ListNext(this IExpressRouteCrossConnectionPeeringsOperations operations, string nextPageLink)
             {
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ExpressRouteCircuitPeering>> ListNextAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ExpressRouteCrossConnectionPeering>> ListNextAsync(this IExpressRouteCrossConnectionPeeringsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

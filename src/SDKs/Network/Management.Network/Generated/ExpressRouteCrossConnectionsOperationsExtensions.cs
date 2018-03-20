@@ -90,10 +90,10 @@ namespace Microsoft.Azure.Management.Network
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group (peering location of the circuit).
             /// </param>
             /// <param name='crossConnectionName'>
-            /// The name of the ExpressRouteCrossConnection.
+            /// The name of the ExpressRouteCrossConnection (service key of the circuit).
             /// </param>
             public static ExpressRouteCrossConnection Get(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName)
             {
@@ -107,10 +107,10 @@ namespace Microsoft.Azure.Management.Network
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group (peering location of the circuit).
             /// </param>
             /// <param name='crossConnectionName'>
-            /// The name of the ExpressRouteCrossConnection.
+            /// The name of the ExpressRouteCrossConnection (service key of the circuit).
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

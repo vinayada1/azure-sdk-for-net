@@ -419,10 +419,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets details about the specified ExpressRouteCrossConnection.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group (peering location of the circuit).
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

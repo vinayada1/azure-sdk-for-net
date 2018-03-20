@@ -19,6 +19,7 @@ internal static partial class SdkInfo
                 new Tuple<string, string, string>("Network", "BgpServiceCommunities", "2018-02-01"),
                 new Tuple<string, string, string>("Network", "CheckDnsNameAvailability", "2018-02-01"),
                 new Tuple<string, string, string>("Network", "ConnectionMonitors", "2018-02-01"),
+                new Tuple<string, string, string>("Network", "DdosProtectionPlans", "2018-02-01"),
                 new Tuple<string, string, string>("Network", "DefaultSecurityRules", "2018-02-01"),
                 new Tuple<string, string, string>("Network", "ExpressRouteCircuitAuthorizations", "2018-02-01"),
                 new Tuple<string, string, string>("Network", "ExpressRouteCircuitConnections", "2018-02-01"),

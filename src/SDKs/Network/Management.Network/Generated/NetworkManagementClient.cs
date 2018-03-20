@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Management.Network
         public virtual IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; private set; }
 
         /// <summary>
+        /// Gets the IDdosProtectionPlansOperations.
+        /// </summary>
+        public virtual IDdosProtectionPlansOperations DdosProtectionPlans { get; private set; }
+
+        /// <summary>
         /// Gets the IAvailableEndpointServicesOperations.
         /// </summary>
         public virtual IAvailableEndpointServicesOperations AvailableEndpointServices { get; private set; }
@@ -500,6 +505,7 @@ namespace Microsoft.Azure.Management.Network
         {
             ApplicationGateways = new ApplicationGatewaysOperations(this);
             ApplicationSecurityGroups = new ApplicationSecurityGroupsOperations(this);
+            DdosProtectionPlans = new DdosProtectionPlansOperations(this);
             AvailableEndpointServices = new AvailableEndpointServicesOperations(this);
             ExpressRouteCircuitAuthorizations = new ExpressRouteCircuitAuthorizationsOperations(this);
             ExpressRouteCircuitPeerings = new ExpressRouteCircuitPeeringsOperations(this);
