@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified peering for the ExpressrouteCrossConnection.
+            /// Gets the specified peering for the ExpressRouteCrossConnection.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Gets the specified peering for the ExpressrouteCrossConnection.
+            /// Gets the specified peering for the ExpressRouteCrossConnection.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a peering in the specified ExpressrouteCrossConnection.
+            /// Creates or updates a peering in the specified ExpressRouteCrossConnection.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a peering in the specified ExpressrouteCrossConnection.
+            /// Creates or updates a peering in the specified ExpressRouteCrossConnection.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a peering in the specified ExpressrouteCrossConnection.
+            /// Creates or updates a peering in the specified ExpressRouteCrossConnection.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Creates or updates a peering in the specified ExpressrouteCrossConnection.
+            /// Creates or updates a peering in the specified ExpressRouteCrossConnection.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

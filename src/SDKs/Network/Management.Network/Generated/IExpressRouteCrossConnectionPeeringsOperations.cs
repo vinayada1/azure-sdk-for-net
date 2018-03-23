@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the specified peering for the ExpressrouteCrossConnection.
+        /// Gets the specified peering for the ExpressRouteCrossConnection.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network
         Task<AzureOperationResponse<ExpressRouteCrossConnectionPeering>> GetWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates a peering in the specified
-        /// ExpressrouteCrossConnection.
+        /// ExpressRouteCrossConnection.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Network
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates a peering in the specified
-        /// ExpressrouteCrossConnection.
+        /// ExpressRouteCrossConnection.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
