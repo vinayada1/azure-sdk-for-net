@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Management.Network
         public virtual IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; private set; }
 
         /// <summary>
+        /// Gets the IDdosProtectionPlansOperations.
+        /// </summary>
+        public virtual IDdosProtectionPlansOperations DdosProtectionPlans { get; private set; }
+
+        /// <summary>
         /// Gets the IAvailableEndpointServicesOperations.
         /// </summary>
         public virtual IAvailableEndpointServicesOperations AvailableEndpointServices { get; private set; }
@@ -123,29 +128,9 @@ namespace Microsoft.Azure.Management.Network
         public virtual IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; private set; }
 
         /// <summary>
-        /// Gets the IExpressRouteCrossConnectionsTagsOperations.
-        /// </summary>
-        public virtual IExpressRouteCrossConnectionsTagsOperations ExpressRouteCrossConnectionsTags { get; private set; }
-
-        /// <summary>
         /// Gets the IExpressRouteCrossConnectionPeeringsOperations.
         /// </summary>
         public virtual IExpressRouteCrossConnectionPeeringsOperations ExpressRouteCrossConnectionPeerings { get; private set; }
-
-        /// <summary>
-        /// Gets the IExpressRouteCircuitsArpTableOperations.
-        /// </summary>
-        public virtual IExpressRouteCircuitsArpTableOperations ExpressRouteCircuitsArpTable { get; private set; }
-
-        /// <summary>
-        /// Gets the IExpressRouteCircuitsRouteTableSummaryOperations.
-        /// </summary>
-        public virtual IExpressRouteCircuitsRouteTableSummaryOperations ExpressRouteCircuitsRouteTableSummary { get; private set; }
-
-        /// <summary>
-        /// Gets the IExpressRouteCircuitsRoutesTableOperations.
-        /// </summary>
-        public virtual IExpressRouteCircuitsRoutesTableOperations ExpressRouteCircuitsRoutesTable { get; private set; }
 
         /// <summary>
         /// Gets the ILoadBalancersOperations.
@@ -500,6 +485,7 @@ namespace Microsoft.Azure.Management.Network
         {
             ApplicationGateways = new ApplicationGatewaysOperations(this);
             ApplicationSecurityGroups = new ApplicationSecurityGroupsOperations(this);
+            DdosProtectionPlans = new DdosProtectionPlansOperations(this);
             AvailableEndpointServices = new AvailableEndpointServicesOperations(this);
             ExpressRouteCircuitAuthorizations = new ExpressRouteCircuitAuthorizationsOperations(this);
             ExpressRouteCircuitPeerings = new ExpressRouteCircuitPeeringsOperations(this);
@@ -507,11 +493,7 @@ namespace Microsoft.Azure.Management.Network
             ExpressRouteCircuits = new ExpressRouteCircuitsOperations(this);
             ExpressRouteServiceProviders = new ExpressRouteServiceProvidersOperations(this);
             ExpressRouteCrossConnections = new ExpressRouteCrossConnectionsOperations(this);
-            ExpressRouteCrossConnectionsTags = new ExpressRouteCrossConnectionsTagsOperations(this);
             ExpressRouteCrossConnectionPeerings = new ExpressRouteCrossConnectionPeeringsOperations(this);
-            ExpressRouteCircuitsArpTable = new ExpressRouteCircuitsArpTableOperations(this);
-            ExpressRouteCircuitsRouteTableSummary = new ExpressRouteCircuitsRouteTableSummaryOperations(this);
-            ExpressRouteCircuitsRoutesTable = new ExpressRouteCircuitsRoutesTableOperations(this);
             LoadBalancers = new LoadBalancersOperations(this);
             LoadBalancerBackendAddressPools = new LoadBalancerBackendAddressPoolsOperations(this);
             LoadBalancerFrontendIPConfigurations = new LoadBalancerFrontendIPConfigurationsOperations(this);

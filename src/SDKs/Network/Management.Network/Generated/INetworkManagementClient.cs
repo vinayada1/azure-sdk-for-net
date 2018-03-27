@@ -85,6 +85,11 @@ namespace Microsoft.Azure.Management.Network
         IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; }
 
         /// <summary>
+        /// Gets the IDdosProtectionPlansOperations.
+        /// </summary>
+        IDdosProtectionPlansOperations DdosProtectionPlans { get; }
+
+        /// <summary>
         /// Gets the IAvailableEndpointServicesOperations.
         /// </summary>
         IAvailableEndpointServicesOperations AvailableEndpointServices { get; }
@@ -120,29 +125,9 @@ namespace Microsoft.Azure.Management.Network
         IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; }
 
         /// <summary>
-        /// Gets the IExpressRouteCrossConnectionsTagsOperations.
-        /// </summary>
-        IExpressRouteCrossConnectionsTagsOperations ExpressRouteCrossConnectionsTags { get; }
-
-        /// <summary>
         /// Gets the IExpressRouteCrossConnectionPeeringsOperations.
         /// </summary>
         IExpressRouteCrossConnectionPeeringsOperations ExpressRouteCrossConnectionPeerings { get; }
-
-        /// <summary>
-        /// Gets the IExpressRouteCircuitsArpTableOperations.
-        /// </summary>
-        IExpressRouteCircuitsArpTableOperations ExpressRouteCircuitsArpTable { get; }
-
-        /// <summary>
-        /// Gets the IExpressRouteCircuitsRouteTableSummaryOperations.
-        /// </summary>
-        IExpressRouteCircuitsRouteTableSummaryOperations ExpressRouteCircuitsRouteTableSummary { get; }
-
-        /// <summary>
-        /// Gets the IExpressRouteCircuitsRoutesTableOperations.
-        /// </summary>
-        IExpressRouteCircuitsRoutesTableOperations ExpressRouteCircuitsRoutesTable { get; }
 
         /// <summary>
         /// Gets the ILoadBalancersOperations.
